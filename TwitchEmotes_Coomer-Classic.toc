@@ -1,5 +1,5 @@
 ## Interface: 20504
-## Version: 1.19.4
+## Version: 1.19.5
 ## Title: TwitchEmotes [|cffeda55fCoomer|r]
 ## IconTexture: Interface\AddOns\TwitchEmotes_Coomer\emotes\abigail.tga
 ## Dependencies: TwitchEmotes
