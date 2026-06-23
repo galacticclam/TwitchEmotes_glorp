@@ -65,3 +65,5 @@ TwitchEmotes_animation_metadata[basePath .. "monkeFell.tga"] = {["nFrames"] = 14
 TwitchEmotes_animation_metadata[basePath .. "Tssk.tga"] = {["nFrames"] = 24, ["frameWidth"] = 32, ["frameHeight"] = 32, ["imageWidth"] = 64, ["imageHeight"] = 1536, ["framerate"] = 48, ["imageFrameHeight"] = 64}
 TwitchEmotes_animation_metadata[basePath .. "sAAAdge.tga"] = {["nFrames"] = 54, ["frameWidth"] = 32, ["frameHeight"] = 32, ["imageWidth"] = 64, ["imageHeight"] = 3456, ["framerate"] = 22}
 TwitchEmotes_animation_metadata[basePath .. "ono.tga"] = {["nFrames"] = 48, ["frameWidth"] = 64, ["frameHeight"] = 32, ["imageWidth"] = 94, ["imageHeight"] = 3072, ["framerate"] = 22, ["imageFrameHeight"] = 64}
+TwitchEmotes_animation_metadata[basePath .. "FROG4.tga"] = {["nFrames"] = 123, ["frameWidth"] = 64, ["frameHeight"] = 32, ["imageWidth"] = 192, ["imageHeight"] = 7872, ["framerate"] = 18, ["imageFrameHeight"] = 64}
+TwitchEmotes_animation_metadata[basePath .. "dogWalk.tga"] = {["nFrames"] = 41, ["frameWidth"] = 32, ["frameHeight"] = 32, ["imageWidth"] = 64, ["imageHeight"] = 2624, ["framerate"] = 18}
