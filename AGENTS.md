@@ -1,6 +1,6 @@
 # Animated Emote Import Procedure
 
-This file documents the procedure for importing animated emotes into the TwitchEmotes_Coomer project.
+This file documents the procedure for importing animated emotes into the TwitchEmotes_glorp project.
 
 ## 1. Select the emote source
 
@@ -26,7 +26,7 @@ This file documents the procedure for importing animated emotes into the TwitchE
 - Confirm the final texture exists and inspect its dimensions.
 - Example using ImageMagick:
   ```bash
-  magick identify -format '%w x %h %m\n' dist/TwitchEmotes_Coomer/emotes/FROG4.tga
+  magick identify -format '%w x %h %m\n' dist/TwitchEmotes_glorp/emotes/FROG4.tga
   ```
 - Confirm the sheet is laid out in a single column or the expected number of columns.
 
@@ -74,7 +74,7 @@ This file documents the procedure for importing animated emotes into the TwitchE
 ## 8. Verify before testing
 
 - After rebuild, confirm the generated texture and metadata are correct.
-- Example: inspect `dist/TwitchEmotes_Coomer/emotes/FROG4.tga` and `animation.lua`.
+- Example: inspect `dist/TwitchEmotes_glorp/emotes/FROG4.tga` and `animation.lua`.
 - Leave the actual in-game testing to the user.
 
 ## 9. Debugging notes

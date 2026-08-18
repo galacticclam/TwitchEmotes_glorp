@@ -1,5 +1,5 @@
 emotes_dir := ./emotes
-dist_dir := ./dist/TwitchEmotes_Coomer
+dist_dir := ./dist/TwitchEmotes_glorp
 dist_emotes_dir := $(dist_dir)/emotes
 
 emotes_in := $(wildcard $(emotes_dir)/*.webp)
@@ -11,8 +11,8 @@ lua_out := $(patsubst ./%.lua,$(dist_dir)/%.lua,$(lua_in))
 toc_in := $(wildcard ./*.toc)
 toc_out := $(patsubst ./%.toc,$(dist_dir)/%.toc,$(toc_in))
 
-version_mainline := $(shell grep "Version: " TwitchEmotes_Coomer-Mainline.toc | cut -d ' ' -f 3)
-version_classic := $(shell grep "Version: " TwitchEmotes_Coomer-Classic.toc | cut -d ' ' -f 3)
+version_mainline := $(shell grep "Version: " TwitchEmotes_glorp-Mainline.toc | cut -d ' ' -f 3)
+version_classic := $(shell grep "Version: " TwitchEmotes_glorp-Classic.toc | cut -d ' ' -f 3)
 
 $(shell mkdir -p $(dist_emotes_dir))
 
@@ -32,5 +32,5 @@ $(dist_dir)/%.toc : ./%.toc
 
 build : emotes lua toc
 ifneq  ($(version_mainline), $(version_classic))
-    $(error TwitchEmotes_Coomer-Mainline.toc is version $(version_mainline), but TwitchEmotes_Coomer-Classic.toc is version $(version_classic))
+    $(error TwitchEmotes_glorp-Mainline.toc is version $(version_mainline), but TwitchEmotes_glorp-Classic.toc is version $(version_classic))
 endif

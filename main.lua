@@ -36,7 +36,7 @@ end
 
 
 function judhead_get_id(text)
-    return string.match("Interface\\AddOns\\TwitchEmotes_Coomer\\emotes\\Corpa.tga:28:28", "([^\\\\]+).tga:")
+    return string.match("Interface\\AddOns\\TwitchEmotes_glorp\\emotes\\Corpa.tga:28:28", "([^\\\\]+).tga:")
 end
 
 function judhead_initsuggestions(suggestions)
@@ -64,9 +64,9 @@ function judhead_initsuggestions(suggestions)
                 renderSuggestionFN = function(text)
                     if judhead_emotes[text] ~= nil then
                         if judhead_exists_both[text] ~= nil then
-                            return Emoticons_RenderSuggestionFN(text) .. "    |cffffff00<Coomer and default pack>|r"
+                            return Emoticons_RenderSuggestionFN(text) .. "    |cffffff00<glorp and default pack>|r"
                         end
-                        return Emoticons_RenderSuggestionFN(text) .. "    |cffffff00<Coomer>|r"
+                        return Emoticons_RenderSuggestionFN(text) .. "    |cffffff00<glorp>|r"
                     end
                     return Emoticons_RenderSuggestionFN(text)
                 end,

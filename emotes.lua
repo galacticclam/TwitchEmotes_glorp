@@ -1,7 +1,7 @@
-basePath = "Interface\\AddOns\\TwitchEmotes_Coomer\\emotes\\"
+basePath = "Interface\\AddOns\\TwitchEmotes_glorp\\emotes\\"
 
 judhead_emotes = {
-    -- Coomer Specfic Memes
+    -- glorp Specfic Memes
     ["judhead"] = basePath .. "judhead.tga:28:28",
     ["ResidentJud"] = basePath .. "ResidentJud.tga:28:28",
     ["sebg"] = basePath .. "sebg.tga:28:28",

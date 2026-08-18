@@ -1,8 +1,0 @@
-## Interface: 120007
-## Version: 1.19.6
-## Title: TwitchEmotes [|cffeda55fCoomer|r]
-## IconTexture: Interface\AddOns\TwitchEmotes_Coomer\emotes\abigail.tga
-## Dependencies: TwitchEmotes
-emotes.lua
-animation.lua
-main.lua

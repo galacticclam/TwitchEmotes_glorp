@@ -4,19 +4,19 @@ set -euo pipefail
 
 stage=${1:-alpha}
 
-version_mainline=$(grep "Version: " TwitchEmotes_Coomer-Mainline.toc | cut -d ' ' -f 3)
-version_classic=$(grep "Version: " TwitchEmotes_Coomer-Classic.toc | cut -d ' ' -f 3)
+version_mainline=$(grep "Version: " TwitchEmotes_glorp-Mainline.toc | cut -d ' ' -f 3)
+version_classic=$(grep "Version: " TwitchEmotes_glorp-Classic.toc | cut -d ' ' -f 3)
 
 [ "$version_mainline" == "$version_classic" ] || {
-    echo "Error: TwitchEmotes_Coomer-Mainline.toc is version $version_mainline, but TwitchEmotes_Coomer-Classic.toc is version $version_classic"
+    echo "Error: TwitchEmotes_glorp-Mainline.toc is version $version_mainline, but TwitchEmotes_glorp-Classic.toc is version $version_classic"
     exit 1
 }
 
 version="$version_mainline-$stage"
 
 dist_root="dist"
-dist_dir="TwitchEmotes_Coomer"
-zip_name="TwitchEmotes_Coomer-$version.zip"
+dist_dir="TwitchEmotes_glorp"
+zip_name="TwitchEmotes_glorp-$version.zip"
 
 make build
 
