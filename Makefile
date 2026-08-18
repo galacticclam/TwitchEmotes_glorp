@@ -2,8 +2,11 @@ emotes_dir := ./emotes
 dist_dir := ./dist/TwitchEmotes_glorp
 dist_emotes_dir := $(dist_dir)/emotes
 
-emotes_in := $(wildcard $(emotes_dir)/*.webp)
-emotes_out := $(patsubst $(emotes_dir)/%.webp,$(dist_emotes_dir)/%.tga,$(emotes_in))
+emotes_webp_in := $(wildcard $(emotes_dir)/*.webp)
+emotes_png_in := $(wildcard $(emotes_dir)/*.png)
+emotes_webp_out := $(patsubst $(emotes_dir)/%.webp,$(dist_emotes_dir)/%.tga,$(emotes_webp_in))
+emotes_png_out := $(patsubst $(emotes_dir)/%.png,$(dist_emotes_dir)/%.tga,$(emotes_png_in))
+emotes_out := $(emotes_webp_out) $(emotes_png_out)
 
 lua_in := $(wildcard ./*.lua)
 lua_out := $(patsubst ./%.lua,$(dist_dir)/%.lua,$(lua_in))
@@ -20,6 +23,8 @@ $(shell mkdir -p $(dist_emotes_dir))
 
 emotes : $(emotes_out)
 $(dist_emotes_dir)/%.tga : $(emotes_dir)/%.webp
+	magick "$<" "$@"
+$(dist_emotes_dir)/%.tga : $(emotes_dir)/%.png
 	magick "$<" "$@"
 
 lua : $(lua_out)

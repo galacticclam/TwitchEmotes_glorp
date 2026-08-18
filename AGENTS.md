@@ -19,6 +19,8 @@ This file documents the procedure for importing animated emotes into the TwitchE
   - extract frames
   - build a stacked texture sheet
   - place the resulting file under `emotes/`
+  - prefer a WebP output for normal animations
+  - fall back to a PNG when the stacked sheet exceeds ImageMagick's WebP size limits for wide stacks
   - optionally add fallback metadata
 
 ## 3. Verify generated image layout
@@ -29,6 +31,7 @@ This file documents the procedure for importing animated emotes into the TwitchE
   magick identify -format '%w x %h %m\n' dist/TwitchEmotes_glorp/emotes/FROG4.tga
   ```
 - Confirm the sheet is laid out in a single column or the expected number of columns.
+- Wide frames like 74x64 or 192x64 are valid; the important thing is that `frameWidth` and `frameHeight` match the true frame size and the stack height equals `nFrames * frameHeight`.
 
 ## 4. Add the emote to `emotes.lua`
 

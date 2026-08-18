@@ -6,8 +6,11 @@ set -euo pipefail
 
 rm -rf import && mkdir import
 image_orig="import/$2.webp"
-image_appended="import/$2-appended.webp"
+# Prefer WebP output for normal animations. PNG is only a fallback when the stacked
+# sheet exceeds ImageMagick's WebP limits for very wide or tall animations.
+image_appended="import/$2-appended.png"
 image_final="emotes/$2.webp"
+image_fallback="emotes/$2.png"
 
 curl "$1" -o "$image_orig"
 
@@ -42,9 +45,10 @@ fi
 orig_h=$(magick identify -ping -format '%h' "$image_appended")
 orig_w=$(magick identify -ping -format '%w' "$image_appended")
 
-# echo $orig_w $orig_h
-
-frames=$(($orig_h/64))
+first_frame="$(ls import/dump_*.png | head -n 1)"
+frame_w=$(magick "$first_frame" -resize x64 -format '%w' info:)
+frame_h=$(magick "$first_frame" -resize x64 -format '%h' info:)
+frames=$(($orig_h/$frame_h))
 
 # Round h up to the next power of 2
 final_h=$(($orig_h-1))
@@ -68,13 +72,18 @@ final_w=$(($final_w+1))
 final_w=$orig_w
 final_h=$orig_h
 
-# echo $final_h
-
-# magick "$image_appended" -background none -gravity North -extent "64x${final_h}" "$image_final"
-cp "$image_appended" "$image_final"
+if [ "$orig_w" -gt 16383 ] || [ "$orig_h" -gt 16383 ]; then
+    cp "$image_appended" "$image_fallback"
+else
+    magick "$image_appended" "$image_final"
+fi
 
 emotes_newline='["'$2'"] = basePath .. "'$2'.tga:28:28",'
-sed -i -e '$i\'"    $emotes_newline" emotes.lua
+if ! grep -Fq "\[\"$2\"\]" emotes.lua; then
+    sed -i -e '$i\'"    $emotes_newline" emotes.lua
+fi
 
-animation_newline="TwitchEmotes_animation_metadata[basePath .. \"$2.tga\"] = {[\"nFrames\"] = $frames, [\"frameWidth\"] = 64, [\"frameHeight\"] = 32, [\"imageWidth\"] = $final_w, [\"imageHeight\"] = $final_h, [\"framerate\"] = 18}";
-echo "$animation_newline" >> animation.lua
+animation_newline="TwitchEmotes_animation_metadata[basePath .. \"$2.tga\"] = {[\"nFrames\"] = $frames, [\"frameWidth\"] = $frame_w, [\"frameHeight\"] = $frame_h, [\"imageWidth\"] = $orig_w, [\"imageHeight\"] = $orig_h, [\"framerate\"] = 18, [\"imageFrameHeight\"] = $frame_h}";
+if ! grep -Fq "basePath .. \"$2.tga\"" animation.lua; then
+    echo "$animation_newline" >> animation.lua
+fi
