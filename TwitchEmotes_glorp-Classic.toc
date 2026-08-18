@@ -1,5 +1,5 @@
 ## Interface: 20504
-## Version: 1.19.6
+## Version: 1.20.0
 ## Title: TwitchEmotes [|cffeda55fglorp|r]
 ## IconTexture: Interface\AddOns\TwitchEmotes_glorp\emotes\abigail.tga
 ## Dependencies: TwitchEmotes
