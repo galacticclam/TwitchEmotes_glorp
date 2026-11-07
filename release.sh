@@ -47,7 +47,7 @@ metadata=$(cat <<EOF
 {
     "changelog": "$version",
     "displayName": "$version",
-    "gameVersions": [14026, 14300, 14422, 16519],
+    "gameVersions": [8, 16984, 17053],
     "releaseType": "$stage"
 }
 EOF
